@@ -59,6 +59,8 @@ passed in as parameters) is always nice for users too:
       roles:
          - { role: frite.recon-user }
 
+Installation is as easy as `ansible-galaxy install frite.recon-user`
+
 License
 -------
 
