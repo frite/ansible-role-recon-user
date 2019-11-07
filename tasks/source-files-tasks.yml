@@ -4,20 +4,20 @@
 
 - name: Ensure line is in file
   lineinfile:
-    path: "{{ home_dir if create_user else ansible_env.HOME }}/{{ startup_file[ansible_distribution] }}"
+    path: "{{ home_dir if user_created else ansible_env.HOME }}/{{ startup_file[ansible_distribution] }}"
     regexp: '^source'
     line: "source ~/.{{ item.value.path }}"
     state: present
-    owner: '{{ username if create_user else ansible_user_id }}'
-    group: '{{ username if create_user else ansible_user_id }}'
+    owner: '{{ username if user_created else ansible_user_id }}'
+    group: '{{ username if user_created else ansible_user_id }}'
     mode: '0700'
   loop: "{{ source_files|dict2items }}"
 
 - name: Get Source files
   get_url:
     url: "{{ item.value.url }}"
-    dest: "{{ home_dir if create_user else ansible_env.HOME }}/{{ item.value.path }}"
-    owner: "{{ username if create_user else ansible_user_id }}"
-    group: "{{ username if create_user else ansible_user_id }}"
+    dest: "{{ home_dir if user_created else ansible_env.HOME }}/{{ item.value.path }}"
+    owner: "{{ username if user_created else ansible_user_id }}"
+    group: "{{ username if user_created else ansible_user_id }}"
     mode: '0700'
   loop: "{{ source_files|dict2items }}"
