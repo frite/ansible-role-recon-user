@@ -33,6 +33,7 @@
   authorized_key:
     user: "{{ username }}"
     state: present
+    manage_dir: true
     key: "{{ lookup('file', authorized_key) }}"
 
 - name: Include sourced files

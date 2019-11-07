@@ -11,18 +11,18 @@ galaxy_info:
   github_branch: master
 
   platforms:
-  - name: Ubuntu
-    versions:
+    - name: Ubuntu
+      versions:
         - xenial
         - bionic
         - disco dingo
         - eoan
-  - name: Debian
-    versions:
-      - buster
-  - name: CentOS
-    versions:
-      - el7
+    - name: Debian
+      versions:
+        - buster
+    - name: CentOS
+      versions:
+        - el7
 
   galaxy_tags: []
   # List tags for your role here, one per line. A tag is a keyword that describes
