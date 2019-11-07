@@ -2,5 +2,5 @@
 # handlers file for common
 
 - name: "Force password change"
-  command: "chage -d 0 {{ username }}"
+  command: "chage -d 0 {{ recon_user_username }}"
   when: user_created.changed

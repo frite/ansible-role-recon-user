@@ -29,7 +29,7 @@ provisioner:
   inventory:
     group_vars:
       all:
-        authorized_key: molecule/default/files/dummy_key.pub
+        recon_user_authorized_key: molecule/default/files/dummy_key.pub
 scenario:
   name: default
 verifier:

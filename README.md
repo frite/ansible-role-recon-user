@@ -17,39 +17,46 @@ Role Variables
 --------------
 The following variables can be set
 
-* `include_recon_profile`.
+* `recon_user_include_recon_profile`.
     - By default, it is set to `true`
     - It will install [recon profile](https://github.com/nahamsec/recon_profile).
-    - Example value `include_recon_profile: true`
-* `authorized_key`.
+    - Example value `recon_user_include_recon_profile: true`
+* `recon_user_authorized_key`.
     - By default, it is set to `files/id_rsa.pub`.
     - Points to where the SSH key is.
     - Example value `authorized_key: files/id_rsa.pub`
-* `username`
+* `recon_user_username`
     - By default it is set to `recon`.
     - It controls the preferred username.
-    - Example value `username: recon`.
-* `preferred_shell`
-    - By default it is set to `/bin/bash`.
+    - Example value `recon_user_username: recon`.
+* `recon_user_preferred_shell`
+    - By default it is set to `/bin/bash`. 
     - It controls the default shell for the user.
-    - Example value `preferred_shell: /bin/bash`
-* `home_dir`
-    - By default it is set to `/home/{{ username }}/`
+    - Example value `recon_user_preferred_shell: /bin/bash`
+    - Updating this will require you to update `startup_file`, i.e. 
+    ```
+    startup_file:
+        Ubuntu: .zsh
+    ```
+* `recon_user_home_dir`
+    - By default it is set to `/home/{{ recon_user_username }}/`
     - It controls the preferred home for user.
-    - Example value `home_dir:"/home/{{ username }}"`
-* `group_membership`
+    - Example value `recon_user_home_dir: "/home/{{ recon_user_username }}"`
+* `recon_user_group_membership`
     - By default, it is set to `sudo`.
     - It controls the privileged group.
-    - Example value `group_membership: 'sudo'`
-* `custom_dirs`
+    - Example value `recon_user_group_membership: 'sudo'`
+* `recon_user_custom_dirs`
     - By default, it contains only `targets`.
     - It can contain as many directories as you want.
     - Example value
         ```
-            custom_dirs:
+            recon_user_custom_dirs:
                 - targets
                 - whatever
         ```
+      
+ Generally, you don't need to change anything but this is just me.
 
 Example Playbook
 ----------------
