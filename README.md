@@ -3,7 +3,7 @@ Ansible Role Recon User
 [![Build Status](https://travis-ci.org/frite/ansible-role-recon-user.svg?branch=master)](https://travis-ci.org/frite/ansible-role-recon-user)
 
 
-This role creates a user, sets up his SSH key, creates custom directories, 
+This role creates a user, sets up his SSH key, creates custom directories,
 adds user to sudo and installs [recon profile](https://github.com/nahamsec/recon_profile)
 
 Requirements
@@ -17,15 +17,15 @@ Role Variables
 --------------
 The following variables can be set
 
-* `include_recon_profile`. 
-    - By default, it is set to `true` 
+* `include_recon_profile`.
+    - By default, it is set to `true`
     - It will install [recon profile](https://github.com/nahamsec/recon_profile).
     - Example value `include_recon_profile: true`
-* `authorized_key`. 
+* `authorized_key`.
     - By default, it is set to `files/id_rsa.pub`.
     - Points to where the SSH key is.
-    - Example value `authorized_key: files/id_rsa.pub`   
-* `username` 
+    - Example value `authorized_key: files/id_rsa.pub`
+* `username`
     - By default it is set to `recon`.
     - It controls the preferred username.
     - Example value `username: recon`.
@@ -44,11 +44,11 @@ The following variables can be set
 * `custom_dirs`
     - By default, it contains only `targets`.
     - It can contain as many directories as you want.
-    - Example value 
+    - Example value
         ```
             custom_dirs:
                 - targets
-                - whatever      
+                - whatever
         ```
 
 Example Playbook
@@ -61,13 +61,13 @@ passed in as parameters) is always nice for users too:
       roles:
          - { role: frite.recon-user }
 
-Installation is as easy as `ansible-galaxy install frite.recon-user`
+Installation is as easy as `ansible-galaxy install frite.recon_user`
 
 Contribution guidelines
 ----------------------
 
-Issues are welcome and so are code contributions. 
-Reg. code contributions, your code needs to pass all tests, 
+Issues are welcome and so are code contributions.
+Reg. code contributions, your code needs to pass all tests,
 i.e. `molecule test` must succeed.
 
 License
