@@ -66,7 +66,7 @@ passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: frite.recon-user }
+         - { role: frite.recon_user }
 
 Installation is as easy as `ansible-galaxy install frite.recon_user`
 
