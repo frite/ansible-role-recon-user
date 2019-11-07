@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: frite
-  role_name: recon-user
+  role_name: recon_user
   description: Ansible role to create recon user and load profiles (i.e. recon profiles)
   company: NaN
 
