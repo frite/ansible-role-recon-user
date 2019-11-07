@@ -1,0 +1,16 @@
+---
+username: 'recon'
+preferred_shell: '/bin/bash'
+home_dir: "/home/{{ username }}/"
+group_membership: 'sudo'
+custom_dir: 'targets'
+
+startup_file:
+  Ubuntu: .profile
+  Debian: .profile
+  CentOS: .bash_profile
+
+# user_password will store the password in /tmp/USERNAME-pass in your local machine
+# the file has the permissions of the current user (most probably your user)
+# You will be requested to change that password after the first login.
+user_password: "{{ lookup('password', '/tmp/{{ username }}-pass chars=ascii_letters length=16') }}"

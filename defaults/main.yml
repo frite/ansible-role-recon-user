@@ -1,0 +1,5 @@
+---
+# defaults
+create_user: true
+include_recon_profile: true
+authorized_key: files/id_rsa.pub

@@ -1,0 +1,6 @@
+---
+# handlers file for common
+
+- name: "User Tasks | Force password change"
+  command: "chage -d 0 {{ username }}"
+  when: user_created.changed
