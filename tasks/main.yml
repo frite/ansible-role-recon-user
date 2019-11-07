@@ -36,6 +36,15 @@
     manage_dir: true
     key: "{{ lookup('file', authorized_key) }}"
 
+- name: Create directory
+  file:
+    path: "{{ home_dir }}/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0700"
+    state: directory
+  loop: "{{ custom_dirs }}"
+
 - name: Include sourced files
   include: 'source-files-tasks.yml'
   when: include_recon_profile

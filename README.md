@@ -1,30 +1,55 @@
-Role Name
+Ansible Role Recon User
 =========
+[![Build Status](https://travis-ci.org/frite/ansible-role-recon-user.svg?branch=master)](https://travis-ci.org/frite/ansible-role-recon-user)
 
-A brief description of the role goes here.
+
+This role creates a user, sets up his SSH key, creates custom directories, 
+adds user to sudo and installs [recon profile](https://github.com/nahamsec/recon_profile)
 
 Requirements
 ------------
+If you are running this from a Mac, you need to install passlib.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+`pip install passlib`.
+
 
 Role Variables
 --------------
+The following variables can be set
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+* `include_recon_profile`. 
+    - By default, it is set to `true` 
+    - It will install [recon profile](https://github.com/nahamsec/recon_profile).
+    - Example value `include_recon_profile: true`
+* `authorized_key`. 
+    - By default, it is set to `files/id_rsa.pub`.
+    - Points to where the SSH key is.
+    - Example value `authorized_key: files/id_rsa.pub`   
+* `username` 
+    - By default it is set to `recon`.
+    - It controls the preferred username.
+    - Example value `username: recon`.
+* `preferred_shell`
+    - By default it is set to `/bin/bash`.
+    - It controls the default shell for the user.
+    - Example value `preferred_shell: /bin/bash`
+* `home_dir`
+    - By default it is set to `/home/{{ username }}/`
+    - It controls the preferred home for user.
+    - Example value `home_dir:"/home/{{ username }}"`
+* `group_membership`
+    - By default, it is set to `sudo`.
+    - It controls the privileged group.
+    - Example value `group_membership: 'sudo'`
+* `custom_dirs`
+    - By default, it contains only `targets`.
+    - It can contain as many directories as you want.
+    - Example value 
+        ```
+            custom_dirs:
+                - targets
+                - whatever      
+        ```
 
 Example Playbook
 ----------------
@@ -34,15 +59,20 @@ passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: ansible-role-recon-user, x: 42 }
+         - { role: frite.recon-user }
+
+Installation is as easy as `ansible-galaxy install frite.recon-user`
+
+Contribution guidelines
+----------------------
+
+Issues are welcome and so are code contributions. 
+Reg. code contributions, your code needs to pass all tests, 
+i.e. `molecule test` must succeed.
 
 License
 -------
 
 BSD
 
-Author Information
-------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).

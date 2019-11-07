@@ -30,3 +30,14 @@ def test_ssh_authorized_file(host):
 
     assert authorized_keys.exists
     assert authorized_keys.contains('SomeTestKey')
+
+
+def test_custom_dir(host):
+    """ Assert recon_tools directory exists in user's home folder. """
+    custom_dir = host.file('/home/recon/targets')
+
+    assert custom_dir.exists
+    assert custom_dir.is_directory
+    assert custom_dir.user == 'recon'
+    assert custom_dir.group == 'recon'
+    assert oct(custom_dir.mode) == '0o700'

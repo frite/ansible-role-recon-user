@@ -3,7 +3,8 @@ username: 'recon'
 preferred_shell: '/bin/bash'
 home_dir: "/home/{{ username }}/"
 group_membership: 'sudo'
-custom_dir: 'targets'
+custom_dirs:
+  - targets
 
 startup_file:
   Ubuntu: .profile
