@@ -1,9 +1,9 @@
 ---
-username: 'recon'
-preferred_shell: '/bin/bash'
-home_dir: "/home/{{ username }}/"
-group_membership: 'sudo'
-custom_dirs:
+recon_user_username: 'recon'
+recon_user_preferred_shell: '/bin/bash'
+recon_user_home_dir: "/home/{{ recon_user_username }}/"
+recon_user_group_membership: 'sudo'
+recon_user_custom_dirs:
   - targets
 
 startup_file:
@@ -14,4 +14,4 @@ startup_file:
 # user_password will store the password in /tmp/USERNAME-pass in your local machine
 # the file has the permissions of the current user (most probably your user)
 # You will be requested to change that password after the first login.
-user_password: "{{ lookup('password', '/tmp/{{ username }}-pass chars=ascii_letters length=16') }}"
+user_password: "{{ lookup('password', '/tmp/{{ recon_user_username }}-pass chars=ascii_letters length=16') }}"

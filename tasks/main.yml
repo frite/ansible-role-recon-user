@@ -4,47 +4,47 @@
 
 - name: Ensure privileged group exists
   group:
-    name: "{{ group_membership }}"
+    name: "{{ recon_user_group_membership }}"
     state: present
 
 - name: Allow privileged group to have sudo
   lineinfile:
     dest: /etc/sudoers
     state: present
-    regexp: "^%{{ group_membership }}"
-    line: "%{{ group_membership }} ALL=(ALL:ALL) ALL"
+    regexp: "^%{{ recon_user_group_membership }}"
+    line: "%{{ recon_user_group_membership }} ALL=(ALL:ALL) ALL"
     validate: 'visudo -cf %s'
 
 - name: Create user account
   user:
-    name: "{{ username }}"
+    name: "{{ recon_user_username }}"
     state: present
     password: "{{ user_password | password_hash('sha512') }}"
     update_password: on_create
     append: true
-    shell: "{{ preferred_shell }}"
-    home: "{{ home_dir }}"
-    groups: "{{ group_membership }}"
+    shell: "{{ recon_user_preferred_shell }}"
+    home: "{{ recon_user_home_dir }}"
+    groups: "{{ recon_user_group_membership }}"
   register: user_created
   notify:
     - 'Force password change'
 
 - name: Set authorized key taken from file
   authorized_key:
-    user: "{{ username }}"
+    user: "{{ recon_user_username }}"
     state: present
     manage_dir: true
-    key: "{{ lookup('file', authorized_key) }}"
+    key: "{{ lookup('file', recon_user_authorized_key) }}"
 
 - name: Create directory
   file:
-    path: "{{ home_dir }}/{{ item }}"
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    path: "{{ recon_user_home_dir }}/{{ item }}"
+    owner: "{{ recon_user_username }}"
+    group: "{{ recon_user_username }}"
     mode: "0700"
     state: directory
-  loop: "{{ custom_dirs }}"
+  loop: "{{ recon_user_custom_dirs }}"
 
 - name: Include sourced files
   include: 'source-files-tasks.yml'
-  when: include_recon_profile
+  when: recon_user_include_recon_profile
