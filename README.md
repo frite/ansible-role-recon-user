@@ -1,5 +1,7 @@
-Role Name
+Ansible Role Recon User
 =========
+[![Build Status](https://travis-ci.org/frite/ansible-role-recon-user.svg?branch=master)](https://travis-ci.org/frite/ansible-role-recon-user)
+
 
 This role creates a user, sets up his SSH key, creates custom directories, 
 adds user to sudo and installs [recon profile](https://github.com/nahamsec/recon_profile)
@@ -60,6 +62,13 @@ passed in as parameters) is always nice for users too:
          - { role: frite.recon-user }
 
 Installation is as easy as `ansible-galaxy install frite.recon-user`
+
+Contribution guidelines
+----------------------
+
+Issues are welcome and so are code contributions. 
+Reg. code contributions, your code needs to pass all tests, 
+i.e. `molecule test` must succeed.
 
 License
 -------

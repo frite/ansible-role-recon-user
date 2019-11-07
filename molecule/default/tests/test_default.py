@@ -40,4 +40,4 @@ def test_custom_dir(host):
     assert custom_dir.is_directory
     assert custom_dir.user == 'recon'
     assert custom_dir.group == 'recon'
-    assert oct(custom_dir.mode) == '0700'
+    assert oct(custom_dir.mode) == '0o700'
