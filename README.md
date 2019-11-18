@@ -1,6 +1,6 @@
 Ansible Role Recon User
 =========
-[![Build Status](https://travis-ci.org/frite/ansible-role-recon-user.svg?branch=master)](https://travis-ci.org/frite/ansible-role-recon-user)
+[![Build Status](https://travis-ci.com/frite/ansible-role-recon-user.svg?branch=master)](https://travis-ci.com/frite/ansible-role-recon-user)
 
 
 This role creates a user, sets up his SSH key, creates custom directories,
@@ -30,10 +30,10 @@ The following variables can be set
     - It controls the preferred username.
     - Example value `recon_user_username: recon`.
 * `recon_user_preferred_shell`
-    - By default it is set to `/bin/bash`. 
+    - By default it is set to `/bin/bash`.
     - It controls the default shell for the user.
     - Example value `recon_user_preferred_shell: /bin/bash`
-    - Updating this will require you to update `startup_file`, i.e. 
+    - Updating this will require you to update `startup_file`, i.e.
     ```
     startup_file:
         Ubuntu: .zsh
@@ -55,7 +55,7 @@ The following variables can be set
                 - targets
                 - whatever
         ```
-      
+
  Generally, you don't need to change anything but this is just me.
 
 Example Playbook
