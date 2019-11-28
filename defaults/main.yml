@@ -2,3 +2,8 @@
 # defaults
 recon_user_include_recon_profile: true
 recon_user_authorized_key: files/id_rsa.pub
+
+recon_source_files:
+  recon_tools:
+    path: '.recon_tools'
+    url: 'https://raw.githubusercontent.com/nahamsec/recon_profile/master/bash_profile'

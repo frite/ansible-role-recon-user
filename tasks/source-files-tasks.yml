@@ -1,7 +1,4 @@
 ---
-- name: Include Source file variables
-  include_vars: source-files-vars.yml
-
 - name: Ensure line is in file
   lineinfile:
     path: "{{ recon_user_home_dir if user_created else ansible_env.HOME }}/{{ startup_file[ansible_distribution] }}"
@@ -11,7 +8,7 @@
     owner: '{{ recon_user_username if user_created else ansible_user_id }}'
     group: '{{ recon_user_username if user_created else ansible_user_id }}'
     mode: '0700'
-  loop: "{{ source_files|dict2items }}"
+  loop: "{{ recon_source_files|dict2items }}"
 
 - name: Get Source files
   get_url:
@@ -20,4 +17,4 @@
     owner: "{{ recon_user_username if user_created else ansible_user_id }}"
     group: "{{ recon_user_username if user_created else ansible_user_id }}"
     mode: '0700'
-  loop: "{{ source_files|dict2items }}"
+  loop: "{{ recon_source_files|dict2items }}"

@@ -4,7 +4,7 @@ Ansible Role Recon User
 
 
 This role creates a user, sets up his SSH key, creates custom directories,
-adds user to sudo and installs [recon profile](https://github.com/nahamsec/recon_profile)
+adds user to sudo and installs source files. 
 
 Requirements
 ------------
@@ -55,6 +55,17 @@ The following variables can be set
                 - targets
                 - whatever
         ```
+* `recon_source_files`. 
+    - By default, it will install [recon profile](https://github.com/nahamsec/recon_profile).
+    - It can contain as many files as you want.
+    - Example 
+    ```
+        recon_source_files:
+          recon_tools:
+            path: '.recon_tools'
+            url: 'https://raw.githubusercontent.com/nahamsec/recon_profile/master/bash_profile'    
+  
+    ``` 
 
  Generally, you don't need to change anything but this is just me.
 
