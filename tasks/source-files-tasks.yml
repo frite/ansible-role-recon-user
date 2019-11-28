@@ -11,7 +11,7 @@
     owner: '{{ recon_user_username if user_created else ansible_user_id }}'
     group: '{{ recon_user_username if user_created else ansible_user_id }}'
     mode: '0700'
-  loop: "{{ source_files|dict2items }}"
+  loop: "{{ recon_source_files|dict2items }}"
 
 - name: Get Source files
   get_url:
@@ -20,4 +20,4 @@
     owner: "{{ recon_user_username if user_created else ansible_user_id }}"
     group: "{{ recon_user_username if user_created else ansible_user_id }}"
     mode: '0700'
-  loop: "{{ source_files|dict2items }}"
+  loop: "{{ recon_source_files|dict2items }}"
